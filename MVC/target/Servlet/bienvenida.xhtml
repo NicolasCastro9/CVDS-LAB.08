@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+   <h:head>
+      <title>Pagina de bienvenida</title>
+   </h:head>
+   <h:body>
+      <h:form prependId="false">
+         <h:panelGrid columns="2">
+            <h:outputLabel value="Nombre: " for="userName" />
+            <h:inputText id="userName" value="#{userBean.name}" />
+            <h:outputText value="" />
+            <h:commandButton value="Ingresar" action="guess.xhtml?faces-redirect=true"/>
+         </h:panelGrid>
+      </h:form>
+   </h:body>

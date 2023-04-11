@@ -1,5 +1,4 @@
 package edu.eci.cvds.servlet.Spring;
-
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import org.springframework.stereotype.Component;
