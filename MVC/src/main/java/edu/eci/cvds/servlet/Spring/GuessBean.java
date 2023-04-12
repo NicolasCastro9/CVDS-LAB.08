@@ -8,6 +8,9 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,6 +19,8 @@ import org.springframework.stereotype.Component;
 @SessionScoped
 
 public class GuessBean implements Serializable{
+    @Autowired
+    ConfigurationService configurationService;
     private int number;
 	private int intent;
 	private int price;
@@ -98,6 +103,16 @@ public class GuessBean implements Serializable{
 
     public ArrayList<Integer> getPastIntents() {
         return pastIntents;
+    }
+
+    @Bean
+    public CommandLineRunner currentPrice() throws Exception {
+        return args -> {
+            configurationService.addConfiguration(new Configuration("Premio","100000"));
+            configurationService.getAllConfigurations().forEach(configutationB -> System.out.println(configutationB));
+            price = Integer.parseInt(configurationService.getConfiguration("Premio").getValor());
+            restart();
+        };
     }
 
 
